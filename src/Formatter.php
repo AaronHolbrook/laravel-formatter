@@ -34,13 +34,13 @@ class Formatter
      * @param  string      $delimiter The delimitation of data formatter to csv
      * @return Formatter
      */
-    public static function make($data, $type, $delimiter = null)
+    public static function make($data, $type, $delimiter = null, $enclosure = '|')
     {
         if (in_array($type, self::$supportedTypes)) {
             $parser = null;
             switch ($type) {
                 case self::CSV:
-                    $parser = new CsvParser($data, $delimiter);
+                    $parser = new CsvParser($data, $delimiter, $enclosure);
                     break;
                 case self::JSON:
                     $parser = new JsonParser($data);
